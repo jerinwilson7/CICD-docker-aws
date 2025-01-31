@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  build:
+  deploy:
 
     runs-on: self-hosted
 
@@ -18,7 +18,9 @@ jobs:
       run: sudo docker pull jerinwilson/cicd-pipeline:latest
 
     - name: Delete the old docker container
-      run: sudo docker rm -f cicd-pipeline-container || true
+      run: |
+       sudo docker stop cicd-pipeline-container || true
+       sudo docker rm -f cicd-pipeline-container || true
 
     - name: Run docker container with the latest image
       run: sudo docker run -d -p 8080:8080 --name cicd-pipeline-container jerinwilson/cicd-pipeline
