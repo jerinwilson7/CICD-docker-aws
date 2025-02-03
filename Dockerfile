@@ -30,5 +30,5 @@ RUN npm ci --only=production
 
 COPY --from=build /app/build ./build
 
-EXPOSE ${PORT}
+EXPOSE $PORT
 CMD ["node", "build/app.js"]
