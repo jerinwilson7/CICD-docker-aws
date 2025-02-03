@@ -13,6 +13,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Create env files
+      run: |
+        touch .env
+        echo "${{secrets.PROD_ENV_FILE}}" > .env
+        
     - name: Login to DockerHub
       env:
          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
