@@ -2,8 +2,10 @@
 FROM node:20-alpine AS build
 
 ARG PORT=8080
+ARG NAME
 
 ENV PORT=${PORT}
+ENV NAME=${NAME}
 
 WORKDIR /app
 
@@ -21,8 +23,10 @@ FROM node:20-alpine AS production
 WORKDIR /app
 
 ARG PORT=8080
+ARG NAME
 
 ENV PORT=${PORT}
+ENV NAME=${NAME}
 
 COPY package*.json .
 
