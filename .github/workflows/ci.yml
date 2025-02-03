@@ -17,7 +17,7 @@ jobs:
       run: |
         touch .env
         echo "${{secrets.PROD_ENV_FILE}}" > .env
-        
+
     - name: Login to DockerHub
       env:
          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
@@ -25,7 +25,7 @@ jobs:
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       
     - name: Build the Docker image
-      run: docker build -t jerinwilson/cicd-pipeline .
+      run: docker build --build-arg PORT=${{secrets.PROD_ENV_FILE}} -t jerinwilson/cicd-pipeline .
 
     - name: Push image to Dockerhub
       run: docker push jerinwilson/cicd-pipeline:latest
