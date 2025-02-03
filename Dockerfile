@@ -1,7 +1,7 @@
 #Build stage
 FROM node:20-alpine AS build
 
-ARG PORT
+ARG PORT=8080
 
 ENV PORT=${PORT}
 
@@ -20,7 +20,7 @@ FROM node:20-alpine AS production
 
 WORKDIR /app
 
-ARG PORT
+ARG PORT=8080
 
 ENV PORT=${PORT}
 
